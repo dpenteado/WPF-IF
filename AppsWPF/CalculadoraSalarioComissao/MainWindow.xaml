@@ -1,0 +1,249 @@
+﻿<Window x:Class="CalculadoraSalarioComissao.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CalculadoraSalarioComissao"
+        mc:Ignorable="d"
+        Title="Calculadora de Salário" Height="450" Width="800"
+        FontFamily="Segoe UI">
+
+    <Grid Background="#F8FAFC">
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        
+        <StackPanel Grid.Row="0">
+            
+            <TextBlock 
+                FontWeight="Bold" 
+                FontSize="20" 
+                Padding="15" 
+                Margin="20,10"
+                TextAlignment="Center">CÁLCULO DE SALARIO FIXO + COMISSÃO
+            </TextBlock>
+            
+        </StackPanel>
+
+        <Grid Grid.Row="1" Margin="0,0,10,10">
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                </Grid.RowDefinitions>
+
+                <Label Grid.Row="0" Content="Salário Fixo:" Margin="20,0,0,0"/>
+                <TextBox Grid.Row="1" x:Name="txtSalario" Height="30" Padding="8,5" FontSize="14" Margin="20,0,20,12"/>
+
+                <Label Grid.Row="2" Content="Total de Vendas:" Margin="20,0,0,0"/>
+                <TextBox Grid.Row="3" x:Name="txtVendas" Height="30" Padding="8,5" FontSize="14" Margin="20,0,20,12"/>
+
+                <Grid Grid.Row="4" Margin="20" VerticalAlignment="Center">
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="12"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    
+                    
+                    <!-- Botão Calcular -->
+                    <StackPanel
+                        Grid.Column="0" Margin="0,0,0,10">
+
+                        <Button
+                            Content="Calcular"
+                            x:Name="btnCalcular"
+                            Height="42"
+                            Cursor="Hand"
+                            Click="btnCalcular_Click"
+                            Background="#0284C7"
+                            Foreground="White"
+                            FontWeight="SemiBold"
+                            FontSize="14"
+                            BorderThickness="0">
+
+                            <Button.Template>
+                                <ControlTemplate TargetType="Button">
+                                    <Border
+                                        x:Name="borda"
+                                        Background="{TemplateBinding Background}"
+                                        CornerRadius="8"
+                                        Padding="5">
+                                        <ContentPresenter
+                                            HorizontalAlignment="Center"
+                                            VerticalAlignment="Center"/>
+                                    </Border>
+
+                                    <ControlTemplate.Triggers>
+
+                                        <Trigger 
+                                            Property="IsMouseOver" 
+                                            Value="True">
+                                            <Setter
+                                                TargetName="borda"
+                                                Property="Background"
+                                                Value="#075985"/>
+                                        </Trigger>
+
+                                    </ControlTemplate.Triggers>
+
+                                </ControlTemplate>
+
+                            </Button.Template>
+
+                        </Button>
+                     
+                    </StackPanel>
+
+                    <!-- Botão Limpar -->
+                    <StackPanel
+                        Grid.Column="2">
+
+                        <Button
+                            Content="Limpar"
+                            x:Name="btnLimpar"
+                            Height="42"
+                            Cursor="Hand"
+                            Click="btnLimpar_Click"
+                            Background="#E2E8F0"
+                            Foreground="Black"
+                            FontWeight="SemiBold"
+                            FontSize="14"
+                            BorderThickness="0">
+
+                            <Button.Template>
+                                <ControlTemplate TargetType="Button">
+                                    <Border
+                                        x:Name="borda"
+                                        Background="{TemplateBinding Background}"
+                                        BorderBrush="#94A3B8"
+                                        CornerRadius="8"
+                                        Padding="5">
+                                        <ContentPresenter
+                                            HorizontalAlignment="Center"
+                                            VerticalAlignment="Center"/>
+                                    </Border>
+
+                                    <ControlTemplate.Triggers>
+
+                                        <Trigger 
+                                            Property="IsMouseOver" 
+                                            Value="True">
+                                            <Setter
+                                                TargetName="borda"
+                                                Property="Background"
+                                                Value="#075985"/>
+                                        </Trigger>
+
+                                    </ControlTemplate.Triggers>
+
+                                </ControlTemplate>
+
+                            </Button.Template>
+
+                        </Button>
+
+                    </StackPanel>
+
+                </Grid>
+
+            </Grid>
+
+            <Grid Grid.Column="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <StackPanel 
+                    Grid.Column="0" 
+                    HorizontalAlignment="Center" 
+                    VerticalAlignment="Center" Margin="30,0,5,0">
+
+                    <TextBlock 
+                        FontSize="20" 
+                        FontWeight="Bold">Total:
+                    </TextBlock>
+                    
+                </StackPanel>
+
+                <StackPanel 
+                    Grid.Column="1" 
+                    HorizontalAlignment="Center" 
+                    VerticalAlignment="Center">
+                    
+                    <TextBlock 
+                        Padding="10"
+                        FontWeight="SemiBold" 
+                        FontSize="14">Painel de Resultado Final
+                    </TextBlock>
+
+                    
+                    <TextBlock 
+                        FontSize="20"
+                        FontWeight="Bold"
+                        Foreground="#059669"
+                        Padding="10"
+                        x:Name="txtTotal"
+                        Text="R$ 0,00"
+                        HorizontalAlignment="Center">
+                    </TextBlock>
+
+                    <TextBlock
+                        x:Name="txtDetalheSalario"
+                        Text="Salário Fixo: R$ 0,00"
+                        FontSize="13"
+                        Margin="0,0,0,3"
+                        HorizontalAlignment="Center">
+                    </TextBlock>
+
+                    <TextBlock 
+                        x:Name="txtDetalheComissao"
+                        Text="Comissão (0%): R$ 0,00"
+                        FontSize="13"
+                        Margin="0,0,0,3"
+                        HorizontalAlignment="Center">
+                    </TextBlock>
+                    
+                </StackPanel>
+            </Grid>
+
+
+        </Grid>
+
+        <Border 
+            Grid.Row="2" 
+            BorderBrush="#0284C7" 
+            BorderThickness="2"
+            Margin="20,0,20,15"
+            CornerRadius="5">
+            
+            <StackPanel Margin="0,10,0,10">
+                <TextBlock Padding="15,5,0,5" FontWeight="SemiBold" FontSize="14">Regras de Comissão</TextBlock>
+                <TextBlock Padding="15,1,1,2" FontSize="13">* Até R$ 1.000.000,00 = 3%</TextBlock>
+                <TextBlock Padding="15,1,1,2" FontSize="13">* Acima de R$ 1.000.000,00 = 5%</TextBlock>
+            </StackPanel>
+
+        </Border>
+        
+        
+
+        <Grid>
+            
+        </Grid>
+        
+    </Grid>
+</Window>
