@@ -1,0 +1,112 @@
+﻿ <Window x:Class="SimuladorDeRendimentos.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SimuladorDeRendimentos"
+        mc:Ignorable="d"
+        Title="Simulador de Rendimentos" Height="520" Width="820"
+        WindowStartupLocation="CenterScreen" Background="#F4F7FB" ResizeMode="NoResize">
+
+    <Grid Margin="25">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <!-- Cabeçalho -->
+        <StackPanel Grid.Row="0" Margin="0,0,0,20">
+            <TextBlock Text="SIMULADOR DE RENDIMENTOS" FontSize="20" FontWeight="Bold" Foreground="#1E293B"/>
+            <TextBlock Text="Cálculo de juros simples aplicado ao investimento" FontSize="12" Foreground="#64748B" Margin="0,4,0,0"/>
+        </StackPanel>
+
+        <!-- Conteúdo Principal (2 Colunas) -->
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1.2*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <!-- Painel Esquerdo: Entradas -->
+            <Border Grid.Column="0" Background="White" CornerRadius="12" Padding="20" Margin="0,0,15,0">
+                <Border.Effect>
+                    <DropShadowEffect Color="#CBD5E1" BlurRadius="15" ShadowDepth="4" Opacity="0.4"/>
+                </Border.Effect>
+
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+
+                    <TextBlock Grid.Row="0" Text="ENTRADAS DE DADOS" FontWeight="Bold" Foreground="#334155" FontSize="13" Margin="0,0,0,12"/>
+
+                    <!-- Capital -->
+                    <Label Grid.Row="1" Content="Capital:" Foreground="#475569" Padding="0,0,0,3"/>
+                    <TextBox Grid.Row="2" x:Name="txtCapital" Height="35" Padding="8,5" FontSize="14" VerticalContentAlignment="Center" BorderBrush="#CBD5E1" Margin="0,0,0,12"/>
+
+                    <!-- Taxa de juros -->
+                    <Label Grid.Row="3" Content="Taxa de juros:" Foreground="#475569" Padding="0,0,0,3"/>
+                    <TextBox Grid.Row="4" x:Name="txtTaxaJuros" Height="35" Padding="8,5" FontSize="14" VerticalContentAlignment="Center" BorderBrush="#CBD5E1" Margin="0,0,0,12"/>
+
+                    <!-- Tempo do investimento -->
+                    <Label Grid.Row="5" Content="Tempo do investimento:" Foreground="#475569" Padding="0,0,0,3"/>
+                    <TextBox Grid.Row="6" x:Name="txtTempoInvestimento" Height="35" Padding="8,5" FontSize="14" VerticalContentAlignment="Center" BorderBrush="#CBD5E1" Margin="0,0,0,15"/>
+
+                    <!-- Botão Calcular -->
+                    <Button Grid.Row="7" x:Name="btnCalcular" Content="Calcular" Height="40"
+                            Background="#0284C7" Foreground="White" FontWeight="Bold" FontSize="14" Cursor="Hand"
+                            Click="ButtonCalculaRendimento_Click">
+                        <Button.Template>
+                            <ControlTemplate TargetType="Button">
+                                <Border Background="{TemplateBinding Background}" CornerRadius="8">
+                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Button.Template>
+                    </Button>
+                </Grid>
+            </Border>
+
+            <!-- Painel Direito: Resultados -->
+            <StackPanel Grid.Column="1" Margin="10,0,0,0">
+
+                <!-- Caixa de Rendimento Obtido -->
+                <Border Background="#F0FDF4" CornerRadius="12" Padding="18" Margin="0,0,0,15" BorderBrush="#BBF7D0" BorderThickness="1">
+                    <StackPanel>
+                        <TextBlock Text="RENDIMENTO OBTIDO:" FontSize="11" FontWeight="Bold" Foreground="#166534"/>
+                        <TextBlock x:Name="txtRendimento" Text="0,00" FontSize="26" FontWeight="Bold" Foreground="#15803D" Margin="0,8,0,0"/>
+                    </StackPanel>
+                </Border>
+
+                <!-- Caixa de Montante -->
+                <Border Background="White" CornerRadius="12" Padding="18" BorderBrush="#E2E8F0" BorderThickness="1">
+                    <Border.Effect>
+                        <DropShadowEffect Color="#CBD5E1" BlurRadius="15" ShadowDepth="4" Opacity="0.4"/>
+                    </Border.Effect>
+                    <StackPanel>
+                        <TextBlock Text="MONTANTE:" FontSize="11" FontWeight="Bold" Foreground="#475569"/>
+                        <TextBlock x:Name="txtMontante" Text="0,00" FontSize="26" FontWeight="Bold" Foreground="#0284C7" Margin="0,8,0,0"/>
+                    </StackPanel>
+                </Border>
+
+            </StackPanel>
+        </Grid>
+
+        <!-- Rodapé com a Fórmula -->
+        <Border Grid.Row="2" Background="White" CornerRadius="8" Padding="12" Margin="0,15,0,0">
+            <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                <TextBlock Text="Fórmula Utilizada: " FontSize="12" Foreground="#64748B" FontWeight="Bold"/>
+                <TextBlock Text="J = C * i * t" FontSize="13" Foreground="#0F172A" FontWeight="Bold" Margin="5,0,0,0"/>
+            </StackPanel>
+        </Border>
+    </Grid>
+</Window>
