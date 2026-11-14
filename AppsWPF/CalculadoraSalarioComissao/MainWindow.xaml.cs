@@ -33,7 +33,7 @@ namespace CalculadoraSalarioComissao
 
             decimal total = salario + comissao;
 
-            txtDetalheSalario.Text = $"{salario:C}";
+            txtDetalheSalario.Text = $"Salário Fixo: {salario:C}";
             txtDetalheComissao.Text = $"Comissão ({taxaComissao * 100:N0}%): {comissao:C}";
             txtTotal.Text = $"{total:C}";
         }
