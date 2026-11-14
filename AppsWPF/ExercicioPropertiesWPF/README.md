@@ -34,3 +34,5 @@ Para tornar a aplicação mais interativa, robusta e próxima de um cenário rea
   * **Adicionar:** Permite cadastrar novos produtos informando os dados nos campos de texto e inserindo-os instantaneamente na tabela.
   * **Deletar:** Permite remover o produto selecionado no `DataGrid`.
   * **Limpar Campos:** Restaura os campos do formulário para o estado vazio com um único clique.
+
+![Texto Alternativo da Imagem](https://github.com/dpenteado/WPF-IF/blob/b38d413814ef3513401d1592d4c83d865f5f0c11/AppsWPF/ExercicioPropertiesWPF/Tela.png)
